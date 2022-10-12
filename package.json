@@ -1,0 +1,33 @@
+{
+  "name": "validasiamikom",
+  "version": "1.6.9",
+  "description": "Library ini dibuat dengan tujuan untuk pembelajaran dan tidak seterusnya absen melalui web.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github.com/Bintang73.git"
+  },
+  "keywords": [
+    "Absensi",
+    "Amikom"
+  ],
+  "author": "st4rz Aka Bintang Nur Pradana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/github.com/Bintang73/issues"
+  },
+  "homepage": "https://github.com/github.com/Bintang73#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "node-cron": "^3.0.2",
+    "node-fetch": "^2.6.7",
+    "node-telegram-bot-api": "^0.59.0",
+    "telegram-format": "^2.1.0"
+  }
+}

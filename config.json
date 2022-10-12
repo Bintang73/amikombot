@@ -1,0 +1,98 @@
+{
+    "senin": {
+        "matkul": {
+            "pbo": {
+                "jam_teori": "10:40 - 12:20",
+                "jam_prak": "12:30 - 14:10",
+                "gedung_teori": "GEDUNG 2 - R 3.6",
+                "gedung_prak": "GEDUNG 2 - LAB 4",
+                "kelas": "IF21A",
+                "kode_matkul": 2
+            },
+            "bahasa_inggris": {
+                "jam_teori": "14:20 - 16:00",
+                "jam_prak": "Tidak ada praktikum di matkul ini.",
+                "gedung_teori": "GEDUNG 2 - R 2.3",
+                "gedung_prak": "Tidak ada praktikum di matkul ini.",
+                "kelas": "IF21A",
+                "kode_matkul": 7
+            }
+        }
+    },
+    "selasa": {
+        "matkul": {
+            "sistem_operasi": {
+                "jam_teori": "10:40 - 12:20",
+                "jam_prak": "12:30 - 14:10",
+                "gedung_teori": "GEDUNG 2 - R 2.3",
+                "gedung_prak": "GEDUNG 2 - LAB 2",
+                "kelas": "IF21A",
+                "kode_matkul": 0
+            }
+        }
+    },
+    "rabu": {
+        "matkul": {
+            "v3d": {
+                "jam_teori": "07:00 - 08:40",
+                "jam_prak": "08:50 - 10:30",
+                "gedung_teori": "GEDUNG 2 - R 2.2",
+                "gedung_prak": "GEDUNG 2 - LAB 2",
+                "kelas": "IF21A",
+                "kode_matkul": 6
+            },
+            "python": {
+                "jam_teori": "10:40 - 12:20",
+                "jam_prak": "12:30 - 14:10",
+                "gedung_teori": "GEDUNG 2 - R 3.9",
+                "gedung_prak": "GEDUNG 2 - LAB 3",
+                "kelas": "IF21F",
+                "kode_matkul": 4
+            },
+            "jarkom": {
+                "jam_teori": "14:20 - 16:00",
+                "jam_prak": "16:15 - 17:55",
+                "gedung_teori": "GEDUNG 2 - R 3.4",
+                "gedung_prak": "GEDUNG 2 - LAB 5",
+                "kelas": "IF21C",
+                "kode_matkul": 5
+            }
+        }
+    },
+    "kamis": {
+        "matkul": {
+            "kalkulus": {
+                "jam_teori": "12:30 - 14:10",
+                "jam_prak": "Tidak ada praktikum di matkul ini.",
+                "gedung_teori": "GEDUNG 2 - R 2.4",
+                "gedung_prak": "Tidak ada praktikum di matkul ini.",
+                "kelas": "IF21F",
+                "kode_matkul": 1
+            }
+        }
+    },
+    "jumat": {
+        "matkul": {
+            "asd": {
+                "jam_teori": "08:50 - 10:30",
+                "jam_prak": "Tidak ada praktikum di hari ini, praktikum esok hari.",
+                "gedung_teori": "GEDUNG 2 - R 4.2",
+                "gedung_prak": "Tidak ada praktikum di hari ini, praktikum esok hari.",
+                "kelas": "IF21D",
+                "kode_matkul": 3
+            }
+        }
+    },
+    "sabtu": {
+        "matkul": {
+            "asd": {
+                "jam_teori": "Tidak ada teori hari ini.",
+                "jam_prak": "07:00 - 08:30",
+                "gedung_teori": "Tidak ada teori hari ini.",
+                "gedung_prak": "GEDUNG 2 - LAB 1",
+                "kelas": "IF21D",
+                "kode_matkul": 3
+            }
+        }
+    }
+}
