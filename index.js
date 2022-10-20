@@ -37,8 +37,8 @@ const bot = new TelegramBot(token, { polling: true });
 
 bot.onText(/\/start/, (msg, match) => {
 
-  const chatId = msg.chat.id;
-  const resp = `👋 <b>Selamat Datang di Bot Validasi Amikom</b>
+    const chatId = msg.chat.id;
+    const resp = `👋 <b>Selamat Datang di Bot Validasi Amikom</b>
 
 Untuk memulai validasi semua mata kuliah silahkan ketik: 
 /absenall nim|password_web_student
@@ -46,30 +46,31 @@ Untuk memulai validasi semua mata kuliah silahkan ketik:
 <b>Contoh:</b> /absenall 21SA1123|554123
 `
 
-  bot.sendMessage(chatId, resp, { parse_mode:'HTML' });
+    bot.sendMessage(chatId, resp, { parse_mode: 'HTML' });
 });
 // Matches "/echo [whatever]"
-bot.onText(/\/absenall (.+)/, async(msg, match) => {
-   
+bot.onText(/\/absenall (.+)/, async (msg, match) => {
+
     const chatId = msg.chat.id;
     const resp = match[1];
-    if (!resp.includes('|')) {
-        bot.sendMessage(chatId, "Format pesan harus benar.\n\nContoh: /absenall nim|password");
-    } else {
-        const nim = resp.split('|')[0]
-        const pass = resp.split('|')[1]
-        let session = new getSession(nim, pass);
-        let loginacc = await session.login()
-        if (loginacc.status == true) {
-            bot.sendMessage(chatId, `<b>✅ [ Login Berhasil ]</b>`,{ parse_mode:'HTML' });
-            const getsesi = loginacc.responseheaders.replace('ci_session=', '')
-            const session2 = new getMatkul(getsesi);
-            const infouser = await session2.getInfo()
-            const infomatkul = await session2.getAll()
-            const matkulall = infomatkul.result.join('\n\n')
-            const infolog = `[INFO LOGIN] ~> ${nim} | ${infouser.nama}`
-            console.log(infolog)
-            const infopesanmain = `👋Hai <b>${infouser.nama}</b>
+    try {
+        if (!resp.includes('|')) {
+            bot.sendMessage(chatId, "Format pesan harus benar.\n\nContoh: /absenall nim|password");
+        } else {
+            const nim = resp.split('|')[0]
+            const pass = resp.split('|')[1]
+            let session = new getSession(nim, pass);
+            let loginacc = await session.login()
+            if (loginacc.status == true) {
+                bot.sendMessage(chatId, `<b>✅ [ Login Berhasil ]</b>`, { parse_mode: 'HTML' });
+                const getsesi = loginacc.responseheaders.replace('ci_session=', '')
+                const session2 = new getMatkul(getsesi);
+                const infouser = await session2.getInfo()
+                const infomatkul = await session2.getAll()
+                const matkulall = infomatkul.result.join('\n\n')
+                const infolog = `[INFO LOGIN] ~> ${nim} | ${infouser.nama}`
+                console.log(infolog)
+                const infopesanmain = `👋Hai <b>${infouser.nama}</b>
 \n<b>📝Informasi Mahasiswa</b>
 
 <b>Nim</b> ${infouser.nim}
@@ -90,33 +91,36 @@ bot.onText(/\/absenall (.+)/, async(msg, match) => {
 ${matkulall.replace(/>/g, '\n')}
 
 `
-            bot.sendMessage(chatId, `${infopesanmain}`,{parse_mode:'HTML'});
-            await delay(3000)
-            for (let i = 0; i < infomatkul.result.length; i++) {
-                const kode_matkul = infomatkul.result[i].split('  >')[0]
-                const matkul = infomatkul.result[i].split('  >')[1]
-                const addlogin = await session2.getAbsensi(kode_matkul)
-                if (addlogin.status == 200) {
-                    if (addlogin.result.length > 1) {
-                        for (let i = 0; i < addlogin.result.length; i++) {
-                            const getabs = addlogin.result[i].idp_dosen
+                bot.sendMessage(chatId, `${infopesanmain}`, { parse_mode: 'HTML' });
+                await delay(3000)
+                for (let i = 0; i < infomatkul.result.length; i++) {
+                    const kode_matkul = infomatkul.result[i].split('  >')[0]
+                    const matkul = infomatkul.result[i].split('  >')[1]
+                    const addlogin = await session2.getAbsensi(kode_matkul)
+                    if (addlogin.status == 200) {
+                        if (addlogin.result.length > 1) {
+                            for (let i = 0; i < addlogin.result.length; i++) {
+                                const getabs = addlogin.result[i].idp_dosen
+                                const validates = await session2.addAbsen(getabs)
+                                const validate = validates.includes('true') ? 'Absen berhasil.' : 'Absen gagal.'
+                                bot.sendMessage(chatId, `<b>[ABSENSI]</b> \n<i>Mata Kuliah:</i>\n<b>${matkul}</b> \n\nResponse: <b>${validate}</b>`, { parse_mode: 'HTML' });
+                            }
+                        } else {
+                            const getabs = addlogin.result[0].idp_dosen
                             const validates = await session2.addAbsen(getabs)
                             const validate = validates.includes('true') ? 'Absen berhasil.' : 'Absen gagal.'
-                            bot.sendMessage(chatId, `<b>[ABSENSI]</b> \n<i>Mata Kuliah:</i>\n<b>${matkul}</b> \n\nResponse: <b>${validate}</b>`,{parse_mode:'HTML'});
+                            bot.sendMessage(chatId, `<b>[ABSENSI]</b> \n<i>Mata Kuliah:</i>\n<b>${matkul}</b> \n\nResponse: <b>${validate}</b>`, { parse_mode: 'HTML' });
                         }
                     } else {
-                        const getabs = addlogin.result[0].idp_dosen
-                        const validates = await session2.addAbsen(getabs)
-                        const validate = validates.includes('true') ? 'Absen berhasil.' : 'Absen gagal.'
-                        bot.sendMessage(chatId, `<b>[ABSENSI]</b> \n<i>Mata Kuliah:</i>\n<b>${matkul}</b> \n\nResponse: <b>${validate}</b>`,{parse_mode:'HTML'});
+                        bot.sendMessage(chatId, `<i>Mata Kuliah:</i>\n<b>${matkul}</b>\nStatus Absensi: <b><i>${addlogin.total_presentase}%</i></b>`, { parse_mode: 'HTML' });
                     }
-                } else {
-                    bot.sendMessage(chatId, `<i>Mata Kuliah:</i>\n<b>${matkul}</b>\nStatus Absensi: <b><i>${addlogin.total_presentase}%</i></b>`,{parse_mode:'HTML'});
                 }
-            }
 
-        } else {
-            bot.sendMessage(chatId, `<b>❌ [ Login Gagal ]</b> \n\n<i>nim/password anda salah!</i>`,{parse_mode:'HTML'});
+            } else {
+                bot.sendMessage(chatId, `<b>❌ [ Login Gagal ]</b> \n\n<i>nim/password anda salah!</i>`, { parse_mode: 'HTML' });
+            }
         }
+    } catch (e) {
+        bot.sendMessage(chatId, `<b> [ Web Student Down ]</b> \n\n<i>Bot sedang tidak bisa digunakan, dikarenakan web student amikom Purwokerto mengalami gangguan / down. Silahkan gunakan bot lagi setelah web Student normal kembali</i> \n\n<b>Arigatou :)</b>`, { parse_mode: 'HTML' });
     }
 });
