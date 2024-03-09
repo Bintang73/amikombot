@@ -49,7 +49,7 @@ Untuk memulai validasi semua mata kuliah silahkan ketik:
     bot.sendMessage(chatId, resp, { parse_mode: 'HTML' });
 });
 // Matches "/echo [whatever]"
-bot.onText(/\/absenall (.+)/, async (msg, match) => {
+bot.onText(/\/absenall(.+)/, async (msg, match) => {
 
     const chatId = msg.chat.id;
     const resp = match[1];
