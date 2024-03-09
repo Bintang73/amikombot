@@ -126,5 +126,6 @@ ${matkulall.replace(/>/g, '\n')}
 });
 
 bot.onText(/\/absenall$/, async (msg) => {
+    const chatId = msg.chat.id;
     bot.sendMessage(chatId, "Format pesan harus benar.\n\nContoh: /absenall nim|password");
 });
