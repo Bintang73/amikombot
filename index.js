@@ -134,10 +134,11 @@ bot.onText(/\/info$/, async (msg) => {
     const chatId = msg.chat.id;
     const infopesanmain = `<b>Bot Ini dibuat oleh beberapa mahasiswa IF21C</b>
 
-<b>Version:</b> 3.1
-<b>Last Update:</b> 9/3/2024
-<b>Server:</b> Ubuntu 20 (2/4) Digitalocean
-<b>Donate:</b> Gak perlu, cukup doakan saja hehe.
-<b>Note:</b> Nilai seseorang tidak tentukan oleh banyaknya harta, kekayaan, pangkat atau ilmu. Nilai seseorang ditentukan oleh seberapa besar manfaat yang telah diberikannya bagi orang lain. ~Onno Widodo Purbo.`
+<b>Version:</b> <i>3.1</i>
+<b>Last Update:</b> <i>9/3/2024</i>
+<b>Server:</b> <i>Ubuntu 20 (2/4) Digitalocean</i>
+<b>Donate:</b> <i>Gak perlu, cukup doakan saja hehe.</i>
+
+<b>Note:</b> <i>Nilai seseorang tidak tentukan oleh banyaknya harta, kekayaan, pangkat atau ilmu. Nilai seseorang ditentukan oleh seberapa besar manfaat yang telah diberikannya bagi orang lain. ~Onno Widodo Purbo.</i>`
     bot.sendMessage(chatId, `${infopesanmain}`, { parse_mode: 'HTML' });
 });
