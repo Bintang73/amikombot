@@ -124,3 +124,7 @@ ${matkulall.replace(/>/g, '\n')}
         bot.sendMessage(chatId, `<b> [ Web Student Down ]</b> \n\n<i>Bot sedang tidak bisa digunakan, dikarenakan web student amikom Purwokerto mengalami gangguan / down. Silahkan gunakan bot lagi setelah web Student normal kembali</i> \n\n<b>Arigatou :)</b>`, { parse_mode: 'HTML' });
     }
 });
+
+bot.onText(/\/absenall$/, async (msg) => {
+    bot.sendMessage(chatId, "Format pesan harus benar.\n\nContoh: /absenall nim|password");
+});
