@@ -134,9 +134,9 @@ bot.onText(/\/info$/, async (msg) => {
     const chatId = msg.chat.id;
     const infopesanmain = `<b>Bot Ini dibuat oleh beberapa mahasiswa IF21C</b>
 
-<b>Version:</b> <i>3.1</i>
-<b>Last Update:</b> <i>9/3/2024</i>
-<b>Server:</b> <i>Ubuntu 20 (2/4) Digitalocean</i>
+<b>Version:</b> <i>4.1</i>
+<b>Last Update:</b> <i>25/9/2024</i>
+<b>Server:</b> <i>Armbian S905x OS 24.8.0 Jammy with Linux 6.6.32-ophub</i>
 <b>Donate:</b> <i>Gak perlu, cukup doakan saja hehe.</i>
 
 <b>Note:</b> <i>Nilai seseorang tidak tentukan oleh banyaknya harta, kekayaan, pangkat atau ilmu. Nilai seseorang ditentukan oleh seberapa besar manfaat yang telah diberikannya bagi orang lain. ~Onno Widodo Purbo.</i>`
