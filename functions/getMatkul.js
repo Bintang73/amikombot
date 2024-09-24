@@ -79,7 +79,7 @@ class getMatkul {
             },
             "referrer": "https://student.amikompurwokerto.ac.id/presensi",
             "referrerPolicy": "strict-origin-when-cross-origin",
-            "body": "thn_akademik=2023%2F2024&semester=2",
+            "body": "thn_akademik=2024%2F2025&semester=1",
             "method": "POST",
             "mode": "cors",
             "credentials": "include"
@@ -112,7 +112,7 @@ class getMatkul {
             },
             "referrer": "https://student.amikompurwokerto.ac.id/presensi",
             "referrerPolicy": "strict-origin-when-cross-origin",
-            "body": 'thn_akademik=2023%2F2024&semester=2&makul=' + kodematkul,
+            "body": 'thn_akademik=2024%2F2025&semester=1&makul=' + kodematkul,
             "method": "POST",
             "mode": "cors",
             "credentials": "include"
